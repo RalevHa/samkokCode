@@ -34,3 +34,11 @@ function autoSelectAndInput(dropdownSelectors, textFieldSelector, inputValue, de
         }
     })(0);
 }
+
+// Listen for messages from the background script or the console
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+    if (request.action === "autoSelectAndInput") {
+        autoSelectAndInput(request.dropdownSelectors, request.textFieldSelector, request.inputValue, request.delay);
+        sendResponse({status: "done"});
+    }
+});
