@@ -1,5 +1,8 @@
 // Function to automatically select the first item in multiple dropdowns with a delay and set a value for a text field
-function autoSelectAndInput(dropdownSelectors, textFieldSelector, inputValue, delay) {
+function autoSelectAndInput(inputValue, delay) {
+    const dropdownSelectors = ['#server', '#gameChar'];
+    const textFieldSelector = '#itemCode';
+
     // Function to select the first item in a dropdown
     function selectFirstItem(dropdownSelector, callback) {
         var dropdown = document.querySelector(dropdownSelector);
@@ -38,7 +41,7 @@ function autoSelectAndInput(dropdownSelectors, textFieldSelector, inputValue, de
 // Listen for messages from the background script or the console
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.action === "autoSelectAndInput") {
-        autoSelectAndInput(request.dropdownSelectors, request.textFieldSelector, request.inputValue, request.delay);
+        autoSelectAndInput(request.inputValue, request.delay);
         sendResponse({status: "done"});
     }
 });
