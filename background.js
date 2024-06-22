@@ -29,7 +29,7 @@ function autoSelectAndInput(inputValue, delay) {
     // Loop through each dropdown selector with delays
     (function loop(i) {
         if (i < dropdownSelectors.length) {
-            selectFirstItem(dropdownSelectors[i], function() {
+            selectFirstItem(dropdownSelectors[i], function () {
                 loop(i + 1); // Proceed to the next dropdown after the delay
             });
         } else {
@@ -39,15 +39,15 @@ function autoSelectAndInput(inputValue, delay) {
 }
 
 // Listen for messages from the content script
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
     if (request.action === "autoSelectAndInput") {
         chrome.scripting.executeScript(
             {
-                target: {tabId: sender.tab.id},
+                target: { tabId: sender.tab.id },
                 func: autoSelectAndInput,
                 args: [request.inputValue, request.delay]
             },
-            () => sendResponse({status: "done"})
+            () => sendResponse({ status: "done" })
         );
         return true; // Return true to indicate asynchronous response
     }
