@@ -4,7 +4,8 @@
     "version": "1.0",
     "description": "Automatically selects the first item in dropdowns and sets a value in a text field.",
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "scripting"
     ],
     "content_scripts": [
         {
