@@ -1,0 +1,19 @@
+{
+    "manifest_version": 3,
+    "name": "Auto Select and Input",
+    "version": "1.0",
+    "description": "Automatically selects the first item in dropdowns and sets a value in a text field.",
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://member.genplay.in.th/ItemCode"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ]
+}
